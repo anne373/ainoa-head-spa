@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ainoa Head SPA - Flyer A3 (Police Ubuntu)</title>
+    <title>Ainoa Head SPA - Flyer (Police Ubuntu)</title>
     <style>
         /* #CSS-Variables #Globales */
         :root {
             --primary-color: rgb(227, 95, 18);
             --secondary-color: #2c2c2c;
-            --light-bg: rgba(255, 255, 255, 0.95); /* MODIF (A3-size): Slightly more opaque for larger surface */
+            --light-bg: rgba(255, 255, 255, 0.92);
             --text-light: rgba(255,255,255,0.9);
-            --text-muted: #555; /* MODIF (A3-size): Slightly darker for better readability on large scale */
+            --text-muted: #666;
             --text-dark: #2c2c2c;
-            --border-radius-main: 30px; /* MODIF (A3-size): Increased */
-            --border-radius-item: 20px; /* MODIF (A3-size): Increased */
+            --border-radius-main: 20px;
+            --border-radius-item: 15px;
+            /* #Police-Ubuntu */
             --font-ubuntu: 'Ubuntu', sans-serif; 
         }
 
@@ -30,59 +31,59 @@
         
         /* #Styles-Corps-Page */
         body {
-            font-family: var(--font-ubuntu);
-            background-color: #d0d0d0; /* MODIF (A3-size): Lighter grey for contrast with larger flyer */
+            font-family: var(--font-ubuntu); /* Utilisation de la police Ubuntu */
+            background-color:;
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* MODIF (A3-size): Start, as flyer might be taller than viewport */
-            padding: 30px; /* MODIF (A3-size): More padding around the large flyer */
-            font-weight: 400;
-            overflow-y: auto; /* MODIF (A3-size): Ensure page can scroll if flyer is taller than viewport */
+            align-items: flex-start;
+            padding: 10px;
+            font-weight: 400; /* Poids par défaut pour Ubuntu */
         }
         
         /* #Styles-Conteneur-Flyer */
         .flyer {
-            /* MODIF (A3-size): Dimensions 30cm x 42cm approx in pixels */
-            width: 1134px; 
-            height: 1587px;
-            
+            width: 100%;
+            max-width: 600px;
             background: var(--light-bg);
             border-radius: var(--border-radius-main);
-            box-shadow: 0 30px 60px rgba(139, 69, 19, 0.3); /* MODIF (A3-size): Larger shadow */
+            box-shadow: 0 20px 40px rgba(139, 69, 19, 0.3);
             overflow: hidden;
             position: relative;
-            backdrop-filter: blur(8px); /* MODIF (A3-size): Slightly more blur */
-            border: 1.5px solid rgba(227, 95, 18, 0.25); /* MODIF (A3-size): Slightly thicker border */
-            display: flex;
-            flex-direction: column;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(227, 95, 18, 0.2);
         }
         
         /* #Styles-Entete */
         .header {
             background: var(--primary-color);
-            padding: 5px 30px; /* MODIF (A3-size): Increased padding */
+            padding: 30px 20px;
             text-align: center;
             position: relative;
             overflow: hidden;
         }
         
+        /* #Animation-Fond-Entete */
         .header::before {
             content: '';
             position: absolute;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
             animation: floatBackground 10s linear infinite;
         }
         
+        /* #Keyframes-Animation-Rotation */
         @keyframes floatBackground {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
         
+        /* #Styles-Logo */
         .logo {
-            margin-bottom: 20px; /* MODIF (A3-size): Increased */
+            margin-bottom: 10px;
             position: relative;
             z-index: 2;
             display: flex;
@@ -92,105 +93,115 @@
         
         .logo img {
             max-width: 100%;
-            max-height: 120px; /* MODIF (A3-size): Significantly increased */
+            max-height: 80px;
             width: auto;
             height: auto;
             object-fit: contain;
         }
-    
+        
+        /* #Styles-Sous-titre-Entete */
+        .subtitle {
+            color: var(--text-light);
+            font-size: 1.1em; /* Ajusté pour Ubuntu */
+            font-weight: 500; /* Ubuntu Medium pour un peu plus de présence */
+            letter-spacing: 0.5px; /* Légèrement réduit */
+            text-transform: uppercase;
+            position: relative;
+            z-index: 2;
+            font-family: var(--font-ubuntu); /* Explicite, mais hérité du body */
+        }
         
         /* #Styles-Titre-Principal-SPA */
         .spa-title {
             background: var(--primary-color);
             color: white;
             text-align: center;
-            padding: 2px 30px; /* MODIF (A3-size): Increased */
-            font-size: 2.8em; /* MODIF (A3-size): Increased */
-            font-weight: 700;
-            letter-spacing: 1px; /* MODIF (A3-size): Increased */
+            padding: 15px;
+            font-size: 1.8em; /* Ajusté pour Ubuntu */
+            font-weight: 700; /* Ubuntu Bold */
+            letter-spacing: 0.5px;
             text-transform: uppercase;
+            /* font-style: italic; Retiré, Ubuntu a sa propre version italique si besoin, sinon Bold suffit */
+            font-family: var(--font-ubuntu);
         }
         
         /* #Styles-Section-Services */
         .services {
-            padding: 30px 25px; /* MODIF (A3-size): Increased */
+            padding: 20px 15px;
             background-image: url('https://lh3.googleusercontent.com/d/1NSCj3aRRp0Xbf_DqmMTwPQX35YIxz-ky');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             position: relative;
-            flex-grow: 1; /* MODIF (A3-size): Allow this section to take up available vertical space */
-            overflow-y: auto; /* MODIF (A3-size): Add scroll if content is too much, but ideally it fits */
         }
         
+        /* #Overlay-Transparent-Section-Services */
         .services::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(255, 255, 255, 0.85); /* MODIF (A3-size): Slightly more opaque for readability */
+            background: rgba(255, 255, 255, 0.75);
             z-index: 1;
         }
         
         /* #Styles-Item-Service */
         .service-item {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 245, 242, 0.9) 100%); /* MODIF (A3-size): Adjusted opacity */
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 245, 242, 0.75) 100%);
             border-radius: var(--border-radius-item);
-            padding: 25px; /* MODIF (A3-size): Increased */
-            margin-bottom: 20px; /* MODIF (A3-size): Increased */
-            border-left: 8px solid var(--primary-color); /* MODIF (A3-size): Thicker border */
-            box-shadow: 0 12px 24px rgba(139, 69, 19, 0.1); /* MODIF (A3-size): Adjusted shadow */
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 5px solid var(--primary-color);
+            box-shadow: 0 8px 16px rgba(139, 69, 19, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             z-index: 2;
         }
-        .service-item:last-child {
-            margin-bottom: 0;
-        }
         
         .service-item:hover {
-            transform: translateY(-5px); /* MODIF (A3-size): Larger hover effect */
-            box-shadow: 0 18px 36px rgba(139, 69, 19, 0.2); /* MODIF (A3-size): Larger shadow on hover */
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(139, 69, 19, 0.2);
         }
         
         /* #Styles-Nom-Service */
         .service-name {
-            font-size: 2em; /* MODIF (A3-size): Increased */
-            font-weight: 700;
+            font-size: 1.3em; /* Ajusté pour Ubuntu */
+            font-weight: 700; /* Ubuntu Bold */
             color: var(--text-dark);
-            margin-bottom: 15px; /* MODIF (A3-size): Increased */
+            margin-bottom: 10px;
             text-transform: uppercase;
-            letter-spacing: 0.5px; /* MODIF (A3-size): Adjusted */
+            letter-spacing: 0.3px; /* Légèrement réduit */
+            font-family: var(--font-ubuntu);
         }
         
         /* #Styles-Description-Service */
         .service-description {
             color: var(--text-muted);
-            line-height: 1.7; /* MODIF (A3-size): Increased for readability */
-            margin-bottom: 20px; /* MODIF (A3-size): Increased */
-            font-size: 1.2em; /* MODIF (A3-size): Increased */
-            font-weight: 400;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+            font-weight: 400; /* Ubuntu Regular */
         }
         .service-description em, .service-description strong {
             color: var(--primary-color);
-            font-style: italic;
-            font-weight: 500; /* Ubuntu Medium for emphase */
+            font-style: italic; /* On peut garder l'italique d'Ubuntu */
+            font-weight: 500; /* Ubuntu Medium pour l'emphase */
         }
         
         /* #Styles-Details-Service-Grille */
         .service-details {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* Still 2 columns, but cells will be larger */
-            gap: 20px; /* MODIF (A3-size): Increased gap */
-            margin-top: 20px; /* MODIF (A3-size): Increased */
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 15px;
         }
         
         /* #Styles-Item-Detail-Service */
         .detail-item {
             text-align: center;
             background: white;
-            padding: 15px 10px; /* MODIF (A3-size): Increased */
-            border-radius: 12px; /* MODIF (A3-size): Increased */
-            box-shadow: 0 4px 10px rgba(0,0,0,0.07); /* MODIF (A3-size): Adjusted shadow */
+            padding: 10px 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             transition: transform 0.2s, box-shadow 0.2s;
             cursor: pointer;
             display: block;
@@ -199,8 +210,8 @@
         }
         
         .detail-item:hover {
-            transform: translateY(-3px); /* MODIF (A3-size): Adjusted hover */
-            box-shadow: 0 6px 15px rgba(0,0,0,0.12); /* MODIF (A3-size): Adjusted hover shadow */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         
         .detail-item:active {
@@ -209,19 +220,19 @@
         
         /* #Styles-Label-Detail */
         .detail-label {
-            font-size: 1em; /* MODIF (A3-size): Increased */
-            color: #777; /* MODIF (A3-size): Slightly adjusted */
+            font-size: 0.75em;
+            color: #888;
             text-transform: uppercase;
-            letter-spacing: 0.7px; /* MODIF (A3-size): Adjusted */
-            margin-bottom: 8px; /* MODIF (A3-size): Increased */
-            font-weight: 400;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+            font-weight: 400; /* Ubuntu Regular */
         }
         
         /* #Styles-Valeur-Detail */
         .detail-value {
-            font-weight: 700;
+            font-weight: 700; /* Ubuntu Bold pour les valeurs */
             color: var(--primary-color);
-            font-size: 1.3em; /* MODIF (A3-size): Increased */
+            font-size: 0.95em;
         }
         
         /* #Styles-Pied-de-Page */
@@ -229,22 +240,22 @@
             background: var(--secondary-color);
             color: white;
             text-align: center;
-            padding: 5px 25px; /* MODIF (A3-size): Increased */
-            font-weight: 400;
+            padding: 25px 20px;
+            font-weight: 400; /* Ubuntu Regular pour le texte du footer */
         }
         
         /* #Styles-Infos-Contact */
         .contact-info {
-            font-size: 1.25em; /* MODIF (A3-size): Increased */
-            margin-bottom: 20px; /* MODIF (A3-size): Increased */
-            line-height: 1.8; /* MODIF (A3-size): Increased */
+            font-size: 0.95em;
+            margin-bottom: 15px;
+            line-height: 1.7;
         }
 
         /* #Styles-Liens-Pied-de-Page */
         .footer a {
             color: white;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 500; /* Ubuntu Medium pour les liens */
         }
         .footer a:hover {
             text-decoration: underline;
@@ -253,21 +264,21 @@
         
         /* #Styles-Citation-Zen */
         .zen-quote {
-            font-style: italic;
+            font-style: italic; /* Ubuntu Italic */
             color: var(--primary-color);
-            font-size: 1.15em; /* MODIF (A3-size): Increased */
-            margin-top: 15px; /* MODIF (A3-size): Increased */
-            font-weight: 400;
+            font-size: 0.9em;
+            margin-top: 10px;
+            font-weight: 400; /* Ubuntu Regular Italic */
         }
         
         /* #Styles-Element-Decoratif-Flottant */
         .decorative-element {
             position: absolute;
-            top: 25px; /* MODIF (A3-size): Increased */
-            right: 25px; /* MODIF (A3-size): Increased */
-            width: 70px; /* MODIF (A3-size): Increased */
-            height: 70px; /* MODIF (A3-size): Increased */
-            border: 3px solid rgba(255,255,255,0.35); /* MODIF (A3-size): Thicker border */
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(255,255,255,0.3);
             border-radius: 50%;
             animation: pulse 3s ease-in-out infinite;
             z-index: 3;
@@ -276,20 +287,103 @@
         /* #Keyframes-Animation-Pulsation */
         @keyframes pulse {
             0%, 100% { transform: scale(1); opacity: 0.7; }
-            50% { transform: scale(1.06); opacity: 1; } /* MODIF (A3-size): Adjusted scale for larger element */
+            50% { transform: scale(1.1); opacity: 1; }
         }
 
         /* #Media-Queries-Optimisation-Mobile */
-        /* These media queries are now less relevant for the flyer's internal layout as the flyer is very large.
-           They might affect how the page behaves if the viewport is extremely small, but the flyer content itself is fixed.
-           The @media (max-width: 400px) rule for .service-details is highly unlikely to trigger
-           inside an 1134px wide flyer. Consider removing or adjusting if specific internal responsive
-           behavior is needed for this large format, which is unusual for a fixed-size "print" design.
-        */
-        @media (max-width: 600px) { /* MODIF (A3-size): This breakpoint is now much smaller than the flyer */
-             /* Styles here would apply if the browser window itself is narrower than 600px,
-               potentially making the fixed-size flyer horizontally scrollable within the body.
-               No specific style changes for the flyer's content here unless desired. */
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+            
+            .flyer {
+                border-radius: 15px;
+            }
+            
+            .header {
+                padding: 20px 15px;
+            }
+            
+            .logo img {
+                max-height: 60px;
+            }
+            
+            .spa-title {
+                font-size: 1.6em; /* Ajusté pour Ubuntu */
+                padding: 12px;
+            }
+            
+            .services {
+                padding: 15px 10px;
+            }
+            
+            .service-item {
+                padding: 15px;
+                margin-bottom: 12px;
+            }
+            
+            .service-name {
+                font-size: 1.2em; /* Ajusté pour Ubuntu */
+            }
+            
+            .service-description {
+                font-size: 0.85em;
+            }
+            
+            .service-details {
+                gap: 8px;
+            }
+            
+            .detail-item {
+                padding: 8px 6px;
+            }
+            
+            .detail-label {
+                font-size: 0.7em;
+            }
+            
+            .detail-value {
+                font-size: 0.9em;
+            }
+            
+            .footer {
+                padding: 20px 15px;
+            }
+            
+            .contact-info {
+                font-size: 0.9em;
+            }
+            
+            .zen-quote {
+                font-size: 0.85em;
+            }
+            
+            .decorative-element {
+                width: 30px;
+                height: 30px;
+                top: 10px;
+                right: 10px;
+            }
+        }
+
+        /* #Media-Queries-Tres-Petits-Ecrans */
+        @media (max-width: 360px) {
+            .service-details {
+                grid-template-columns: 1fr;
+                gap: 6px;
+            }
+            
+            .detail-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                text-align: left;
+                padding: 8px 10px;
+            }
+            
+            .detail-label {
+                margin-bottom: 0;
+            }
         }
     </style>
 </head>
